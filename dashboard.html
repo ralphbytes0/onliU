@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard for Baby</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="scroll-box">
+      <div class="box" data-link="music.html" data-text="Let me play you something soft…">
+        <span class="emoji">🎧</span>
+        <p>Music</p>
+      </div>
+      <div class="box" data-link="poems.html" data-text="A hundred ways I’ve thought of you…">
+        <span class="emoji">📜</span>
+        <p>100 Poems</p>
+      </div>
+      <div class="box" data-link="flowers.html" data-text="Let the petals speak…">
+        <span class="emoji">🌸</span>
+        <p>Flower Wall</p>
+      </div>
+      <div class="box" data-link="vault.html" data-text="Every letter, a heartbeat…">
+        <span class="emoji">✉️</span>
+        <p>Letter Vault</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="transitionOverlay" class="overlay">
+    <p class="overlay-text">Opening the space I made for you…</p>
+  </div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    const overlay = document.getElementById('transitionOverlay');
+    const overlayText = overlay.querySelector('.overlay-text');
+
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        boxes.forEach(b => b.classList.remove('active'));
+        box.classList.add('active');
+        box.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        overlayText.textContent = box.dataset.text || "Opening the space I made for you…";
+        overlay.style.display = 'flex';
+        overlay.style.opacity = '1';
+        setTimeout(() => {
+          window.location.href = box.dataset.link;
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
