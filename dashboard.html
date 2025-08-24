@@ -28,6 +28,7 @@
     </div>
   </div>
 
+  <!-- Transition Overlay -->
   <div id="transitionOverlay" class="overlay">
     <p class="overlay-text">Opening the space I made for you…</p>
   </div>
@@ -38,17 +39,27 @@
     const overlayText = overlay.querySelector('.overlay-text');
 
     boxes.forEach(box => {
-      box.addEventListener('click', () => {
+      const handleClick = () => {
         boxes.forEach(b => b.classList.remove('active'));
         box.classList.add('active');
         box.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
         overlayText.textContent = box.dataset.text || "Opening the space I made for you…";
         overlay.style.display = 'flex';
-        overlay.style.opacity = '1';
+
+        // Delay opacity change for smooth transition
+        setTimeout(() => {
+          overlay.style.opacity = '1';
+        }, 50);
+
+        // Redirect after fade-in
         setTimeout(() => {
           window.location.href = box.dataset.link;
         }, 1000);
-      });
+      };
+
+      box.addEventListener('click', handleClick);
+      box.addEventListener('touchstart', handleClick);
     });
   </script>
 </body>
