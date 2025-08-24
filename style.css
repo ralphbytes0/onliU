@@ -1,13 +1,16 @@
+/* General */
 body {
   margin: 0;
-  background-color: #ffffff;
   font-family: 'Quicksand', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
 }
 
+/* Loading Screen */
 .loading-container {
   text-align: center;
 }
@@ -29,20 +32,18 @@ body {
 }
 
 @keyframes drawECG {
-  to {
-    stroke-dashoffset: 0;
-  }
+  to { stroke-dashoffset: 0; }
 }
 
 .loading-text {
   font-size: 1.5rem;
-  color: #000000;
+  color: #000;
   margin-bottom: 5px;
 }
 
 .bpm-text {
   font-size: 0.9rem;
-  color: #555555;
+  color: #555;
   opacity: 0.6;
   margin-bottom: 30px;
 }
@@ -65,17 +66,100 @@ body {
 }
 
 .continue-button {
-  display: inline-block;
   padding: 12px 24px;
   font-size: 1rem;
-  color: #000000;
-  text-decoration: none;
-  border: 2px solid #000000;
+  color: #000;
+  border: 2px solid #000;
   border-radius: 6px;
+  background: none;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .continue-button:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
 }
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-text {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+input[type="password"] {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  height: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Dashboard */
+.dashboard-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.scroll-box {
+  display: flex;
+  gap: 30px;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.box {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  background-color: #f9f9f9;
+  border: 2px solid #000;
+  border-radius: 12px;
+  text-align: center;
+  padding: 20px;
+  scroll-snap-align: center;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+  cursor: pointer;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  background-color: #eee;
+}
+
+.box.active {
+  transform
