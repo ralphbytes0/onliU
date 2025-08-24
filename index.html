@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Loading for Baby</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> <!-- Replace with your FontAwesome kit -->
 </head>
 <body>
   <div class="loading-container">
-    <div class="heart-monitor">
-      <div class="pulse-line"></div>
-      <p class="loading-text">Loading...</p>
-      <p class="bpm-text">Heart rate: 84 BPM</p>
-    </div>
+    <svg class="ecg" viewBox="0 0 500 100" preserveAspectRatio="none">
+      <path d="M0,50 L50,50 L70,20 L90,80 L110,50 L150,50 L170,30 L190,70 L210,50 L250,50 L270,20 L290,80 L310,50 L500,50" />
+    </svg>
+    <p class="loading-text">Loading...</p>
+    <p class="bpm-text">Heart rate: 84 BPM</p>
     <div class="icon-row">
       <i class="fas fa-stethoscope"></i>
       <span class="emoji">🌹</span>
